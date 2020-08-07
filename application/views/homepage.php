@@ -20,7 +20,7 @@
 
 <body style="background-image: url('assets/banner.jpg');background-size: cover;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFE5E5;">
-        <a class="navbar-brand" href="#"><a class="pengaduan" style="color: #FF0000;">PENGADUA</a><a class="masyarakat"
+        <a class="navbar-brand" href="#"><a class="pengaduan" style="color: #FF0000;">PENGADUAN</a><a class="masyarakat"
                 style="color: #000000;">MASYARAKAT</a></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
                     <a class="nav-link mt-2 mr-1" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php"><button type="button"
+                    <a class="nav-link" href="<?php echo site_url('LoginController/index'); ?>"><button type="button"
                             class="btn btn-warning">Login</button></a>
                 </li>
             </ul>
