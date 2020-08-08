@@ -60,7 +60,7 @@
                                     At least 8 characters and 1 digit
                                 </small>
                                 <!-- Sign up button -->
-                                <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+                                <a href="<?php echo site_url('SuccessController/index'); ?>" target="_blank"><button class="btn btn-info my-4 btn-block" type="submit">Sign in</button></a>
                             </form>
                             <!-- Default form register -->
                         </div>
