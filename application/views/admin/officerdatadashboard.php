@@ -74,7 +74,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url('AdminController/index');?>">
+                <a class="nav-link" href="<?php echo site_url('OfficerInputController/index');?>">
                     <i class="fas fa-fw fa-envelope-open"></i>
                     <span>Input Petugas</span></a>
             </li>
