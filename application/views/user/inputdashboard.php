@@ -17,6 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('css/sb-admin-2.min.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('css/main.css');?>" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -205,9 +206,6 @@
                       </button>
                     </div>
                   </form>
-                  <br />
-                  <br />
-                  <div class="data"></div>
                 </div>
               </div>
             </div>
