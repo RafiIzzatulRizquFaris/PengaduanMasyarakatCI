@@ -18,6 +18,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url('css/sb-admin-2.min.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('css/main.css');?>" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -227,7 +228,80 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<h1>Editting</h1>
+                <div class="card card-7">
+								<div class="card-body">
+									<form method="POST" action="invoice.php">
+										<div class="form-row">
+											<div class="name">Nama</div>
+											<div class="value">
+												<div class="input-group">
+													<input class="input--style-5" type="text" name="nama_officer" />
+												</div>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="name">Username</div>
+											<div class="value">
+												<div class="input-group">
+													<input class="input--style-5" type="text"
+														name="username_officer" />
+												</div>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="name">Password</div>
+											<div class="value">
+												<div class="input-group">
+													<input class="input--style-5" type="password" name="password_officer" />
+												</div>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="name">No Telepon</div>
+											<div class="value">
+												<div class="input-group">
+													<input type="text" class="input--style-5" name="telepon_officer">
+												</div>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="name">Position</div>
+											<div class="value">
+												<div class="input-group">
+													<div class="rs-select2 js-select-simple select--no-search">
+														<select name="position_officer">
+															<option disabled="disabled" selected="selected">Choose
+																option</option>
+															<option>Admin</option>
+															<option>Officer</option>
+														</select>
+														<div class="select-dropdown"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-row p-t-20">
+											<label class="label label--block">Jenis Kelamin</label>
+											<div class="p-t-15">
+												<label class="radio-container m-r-55">Laki - laki
+													<input type="radio" name="gender_officer" />
+													<span class="checkmark"></span>
+												</label>
+												<label class="radio-container">Perempuan
+													<input type="radio" name="gender_officer" />
+													<span class="checkmark"></span>
+												</label>
+											</div>
+										</div>
+										<div class="text-center">
+											<button class="btn btn--radius-2 btn-success btn-block btn-lg"
+												type="submit">
+												Submit
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
