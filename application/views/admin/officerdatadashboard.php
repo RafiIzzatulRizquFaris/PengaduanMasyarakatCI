@@ -161,7 +161,10 @@
                                             <td>System Architect</td>
                                             <td>tigernixon</td>
                                             <td>082299189919</td>
-                                            <td><button type="button" class="btn btn-warning">Edit</button><button type="button" class="btn btn-danger">Delete</button></td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal">Edit</button>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>2</th>
@@ -169,7 +172,10 @@
                                             <td>Accountant</td>
                                             <td>garretw</td>
                                             <td>085771933140</td>
-                                            <td><button type="button" class="btn btn-warning">Edit</button><button type="button" class="btn btn-danger">Delete</button></td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal">Edit</button>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>3</th>
@@ -177,7 +183,10 @@
                                             <td>Junior Technical Author</td>
                                             <td>ashtoncox</td>
                                             <td>082225884068</td>
-                                            <td><button type="button" class="btn btn-warning">Edit</button><button type="button" class="btn btn-danger">Delete</button></td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal">Edit</button>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -205,6 +214,49 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+
+    <!-- Modal Edit-->
+	<div class="modal fade" id="editModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h1>Editting</h1>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Delete-->
+	<div class="modal fade" id="deleteModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h1>Delete</h1>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Understood</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
