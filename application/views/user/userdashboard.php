@@ -18,6 +18,7 @@
 
 	<!-- Custom styles for this template-->
 	<link href="<?php echo base_url('css/sb-admin-2.min.css');?>" rel="stylesheet">
+	<link href="<?php echo base_url('css/main.css');?>" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
 	</script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -158,21 +159,24 @@
 											<td>2011/04/25</td>
 											<td>System Architect</td>
 											<td>Edinburgh</td>
-											<td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#infoModal">Info</button></td>
+											<td><button type="button" class="btn btn-info" data-toggle="modal"
+													data-target="#infoModal">Info</button></td>
 										</tr>
 										<tr>
 											<td>2</td>
 											<td>2011/04/25</td>
 											<td>System Architect</td>
 											<td>Edinburgh</td>
-											<td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#infoModal">Info</button></td>
+											<td><button type="button" class="btn btn-info" data-toggle="modal"
+													data-target="#infoModal">Info</button></td>
 										</tr>
 										<tr>
 											<td>3</td>
 											<td>2011/04/25</td>
 											<td>System Architect</td>
 											<td>Edinburgh</td>
-											<td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#infoModal">Info</button></td>
+											<td><button type="button" class="btn btn-info" data-toggle="modal"
+													data-target="#infoModal">Info</button></td>
 										</tr>
 									</tbody>
 								</table>
@@ -199,9 +203,9 @@
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top">
 		<i class="fas fa-angle-up"></i>
-    </a>
-    
-    <!-- Modal Info-->
+	</a>
+
+	<!-- Modal Info-->
 	<div class="modal fade" id="infoModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
 		aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -213,7 +217,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<h1>Info</h1>
+					<h1>Information</h1>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
