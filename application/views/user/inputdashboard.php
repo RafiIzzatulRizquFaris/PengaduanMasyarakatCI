@@ -56,18 +56,18 @@
       </div>
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="userdashboard.php">
-          <i class="fas fa-fw fa-database"></i>
-          <span>Aduan Ku</span></a>
-      </li>
+			<li class="nav-item">
+				<a class="nav-link" href="<?php echo site_url('UserDashboardController/index');?>">
+					<i class="fas fa-fw fa-database"></i>
+					<span>Aduan Ku</span></a>
+			</li>
 
-      <!-- Nav Item - Charts -->
-      <li class="nav-item active">
-        <a class="nav-link" href="inputdashboard.php">
-          <i class="fas fa-fw fa-envelope-open"></i>
-          <span>Input Pengaduan</span></a>
-      </li>
+			<!-- Nav Item - Charts -->
+			<li class="nav-item active">
+				<a class="nav-link" href="<?php echo site_url('InputDashboardController/index');?>">
+					<i class="fas fa-fw fa-envelope-open"></i>
+					<span>Input Pengaduan</span></a>
+			</li>
 
       <!-- Divider -->
       <hr class="sidebar-divider" />
