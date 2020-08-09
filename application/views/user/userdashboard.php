@@ -158,21 +158,21 @@
 											<td>2011/04/25</td>
 											<td>System Architect</td>
 											<td>Edinburgh</td>
-											<td><button type="button" class="btn btn-info">Info</button></td>
+											<td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#infoModal">Info</button></td>
 										</tr>
 										<tr>
 											<td>2</td>
 											<td>2011/04/25</td>
 											<td>System Architect</td>
 											<td>Edinburgh</td>
-											<td><button type="button" class="btn btn-info">Info</button></td>
+											<td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#infoModal">Info</button></td>
 										</tr>
 										<tr>
 											<td>3</td>
 											<td>2011/04/25</td>
 											<td>System Architect</td>
 											<td>Edinburgh</td>
-											<td><button type="button" class="btn btn-info">Info</button></td>
+											<td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#infoModal">Info</button></td>
 										</tr>
 									</tbody>
 								</table>
@@ -199,7 +199,28 @@
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top">
 		<i class="fas fa-angle-up"></i>
-	</a>
+    </a>
+    
+    <!-- Modal Info-->
+	<div class="modal fade" id="infoModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h1>Info</h1>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Logout Modal-->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
