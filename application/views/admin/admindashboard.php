@@ -18,6 +18,7 @@
 
 	<!-- Custom styles for this template-->
 	<link href="<?php echo base_url('css/sb-admin-2.min.css');?>" rel="stylesheet">
+	<link href="<?php echo base_url('css/main.css');?>" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
 	</script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -247,68 +248,19 @@
 						<div class="card-body">
 							<form method="POST" action="invoice.php">
 								<div class="form-row">
-									<div class="name">Nama</div>
+									<div class="name">ID</div>
 									<div class="value">
 										<div class="input-group">
-											<input class="input--style-5" type="text" name="nama_pengaduan" />
+											<input class="input--style-5" type="text" name="id_pengaduan" disabled />
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="name">Alamat</div>
+									<div class="name">Tanggapan</div>
 									<div class="value">
 										<div class="input-group">
-											<input class="input--style-5" type="email" name="alamat_pengaduan" />
+											<input class="input--style-5" type="text" name="tanggapan_pengaduan" />
 										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Judul Pengaduan</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="text" name="judul_pengaduan" />
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Isi Pengaduan</div>
-									<div class="value">
-										<div class="input-group text-justify">
-											<!-- <input type="text" class="input--style-5 input-group-text" name="isi_pengaduan"> -->
-											<textarea class="form-control input--style-5 input-group-text"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Kejuruan</div>
-									<div class="value">
-										<div class="input-group">
-											<div class="rs-select2 js-select-simple select--no-search">
-												<select name="kejuran_siswa">
-													<option disabled="disabled" selected="selected">Choose option
-													</option>
-													<option>Rekayasa Perangkat Lunak</option>
-													<option>Multimedia</option>
-													<option>Teknik Elektronik Informasi</option>
-													<option>Broadcast</option>
-													<option>Teknik Komputer Jaringan</option>
-												</select>
-												<div class="select-dropdown"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="form-row p-t-20">
-									<label class="label label--block">Jenis Kelamin</label>
-									<div class="p-t-15">
-										<label class="radio-container m-r-55">Laki - laki
-											<input type="radio" name="gender_siswa" />
-											<span class="checkmark"></span>
-										</label>
-										<label class="radio-container">Perempuan
-											<input type="radio" name="gender_siswa" />
-											<span class="checkmark"></span>
-										</label>
 									</div>
 								</div>
 								<div class="text-center">
