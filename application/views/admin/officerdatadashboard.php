@@ -239,6 +239,14 @@
 						<div class="card-body">
 							<form method="POST" action="invoice.php">
 								<div class="form-row">
+									<div class="name">ID</div>
+									<div class="value">
+										<div class="input-group">
+											<input class="input--style-5" type="text" name="id_officer" disabled />
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
 									<div class="name">Nama</div>
 									<div class="value">
 										<div class="input-group">
