@@ -157,12 +157,15 @@
 										</tr>
 									</thead>
 									<tbody>
+										<?php
+										foreach ($petugas as $datap) {
+										?>
 										<tr>
-											<th>1</th>
-											<td>Tiger Nixon</td>
-											<td>System Architect</td>
-											<td>tigernixon</td>
-											<td>082299189919</td>
+											<th><?php echo $datap->id_petugas?></th>
+											<td><?php echo $datap->nama_petugas?></td>
+											<td><?php echo $datap->username?></td>
+											<td><?php echo $datap->telp?></td>
+											<td><?php echo $datap->level?></td>
 											<td>
 												<button type="button" class="btn btn-warning" data-toggle="modal"
 													data-target="#editModal">Edit</button>
@@ -170,6 +173,9 @@
 													data-target="#deleteModal">Delete</button>
 											</td>
 										</tr>
+										<?php
+										}
+										?>
 										<tr>
 											<th>2</th>
 											<td>Garrett Winters</td>
