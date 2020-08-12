@@ -176,32 +176,6 @@
 										<?php
 										}
 										?>
-										<tr>
-											<th>2</th>
-											<td>Garrett Winters</td>
-											<td>Accountant</td>
-											<td>garretw</td>
-											<td>085771933140</td>
-											<td>
-												<button type="button" class="btn btn-warning" data-toggle="modal"
-													data-target="#editModal">Edit</button>
-												<button type="button" class="btn btn-danger" data-toggle="modal"
-													data-target="#deleteModal">Delete</button>
-											</td>
-										</tr>
-										<tr>
-											<th>3</th>
-											<td>Ashton Cox</td>
-											<td>Junior Technical Author</td>
-											<td>ashtoncox</td>
-											<td>082225884068</td>
-											<td>
-												<button type="button" class="btn btn-warning" data-toggle="modal"
-													data-target="#editModal">Edit</button>
-												<button type="button" class="btn btn-danger" data-toggle="modal"
-													data-target="#deleteModal">Delete</button>
-											</td>
-										</tr>
 									</tbody>
 								</table>
 							</div>
@@ -365,7 +339,7 @@
 				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
+					<a class="btn btn-primary" href="<?php echo site_url('Action/logout');?>">Logout</a>
 				</div>
 			</div>
 		</div>
