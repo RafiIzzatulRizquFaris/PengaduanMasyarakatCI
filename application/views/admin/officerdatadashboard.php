@@ -163,9 +163,9 @@
 										<tr>
 											<th><?php echo $datap->id_petugas?></th>
 											<td><?php echo $datap->nama_petugas?></td>
+											<td><?php echo $datap->level?></td>
 											<td><?php echo $datap->username?></td>
 											<td><?php echo $datap->telp?></td>
-											<td><?php echo $datap->level?></td>
 											<td>
 												<button type="button" class="btn btn-warning" data-toggle="modal"
 													data-target="#editModal">Edit</button>
