@@ -23,21 +23,34 @@ class Action extends CI_Controller{
         );
 
         $check = $this->ModelAction->login_database($account)->num_rows();
+        $role = $this->ModelAction->login_database($account)->row(0)->level;
         if ($check > 0) {
-            $data_session = array(
-                'username' => $username,
-                'status' => 'login'
-            );
-            $this->session->set_userdata($data_session);
-            if ($this->session->userdata('status') == 'login') {
-                header("Location:".base_url().'AdminController/index');
+            if ($role == 'admin' || $role == 'petugas') {
+                $data_session = array(
+                    'username' => $username,
+                    'status' => 'login'
+                );
+                $this->session->set_userdata($data_session);
+                if ($this->session->userdata('status') == 'login') {
+                    header("Location:".base_url().'AdminController/index');
+                } else {
+                    header("Location:".base_url().'Welcome/index');
+                }
             } else {
-                header("Location:".base_url().'Welcome/index');
+                $data_session = array(
+                    'username' => $username,
+                    'status' => 'login'
+                );
+                $this->session->set_userdata($data_session);
+                if ($this->session->userdata('status') == 'login') {
+                    header("Location:".base_url().'UserDashboardController/index');
+                } else {
+                    header("Location:".base_url().'Welcome/index');
+                }
             }
         } else {
             echo 'login gagal';
         }
-        
     }
 
     public function logout (){
