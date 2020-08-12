@@ -31,8 +31,12 @@ class Action extends CI_Controller{
         $role = $this->ModelAction->login_database($account)->row(0)->level;
         if ($check > 0) {
             if ($role == 'admin' || $role == 'petugas') {
+                $current_role = $this->ModelAction->login_database($account)->row(0)->level;
+                $current_id = $this->ModelAction->login_database($account)->row(0)->id_petugas;
                 $data_session = array(
+                    'id' => $current_id,
                     'username' => $username,
+                    'role' => $current_role,
                     'status' => 'login'
                 );
                 $this->session->set_userdata($data_session);
@@ -42,8 +46,11 @@ class Action extends CI_Controller{
                     header("Location:".base_url().'Welcome/index');
                 }
             } else {
+                $current_id = $this->ModelAction->login_database($account)->row(0)->nik;
                 $data_session = array(
+                    'id' => $current_id,
                     'username' => $username,
+                    'role' => 'masyarakat',
                     'status' => 'login'
                 );
                 $this->session->set_userdata($data_session);
