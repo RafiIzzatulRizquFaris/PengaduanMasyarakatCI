@@ -159,31 +159,28 @@
 										</tr>
 									</thead>
 									<tbody>
+									<?php
+									foreach ($pengaduan as $data) {
+										# code...
+									?>
 										<tr>
-											<td>1</td>
-											<td>Keluhan 1</td>
-											<td>08-08-2020</td>
-											<td>Menunggu Tanggapan</td>
-											<td class="text-center"><button type="button" class="btn btn-primary"
-													data-toggle="modal" data-target="#prosesModal">Proses</button></td>
+											<td><?= $data->id_pengaduan?></td>
+											<td><?= $data->judul?></td>
+											<td><?= $data->tgl_pengaduan?></td>
+											<td><?= $data->status?></td>
+											<?php
+											if ($data->status == 'menunggu') {
+												echo '<td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prosesModal">Proses</button></td>';
+											}elseif ($data->status == 'proses') {
+												echo '<td class="text-center"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#selesaiModal">Selesai</button></td>';
+											}elseif ($data->status == 'selesai') {
+												echo '<td class="text-center"><button type="button" class="btn btn-secondary" disabled>No Action</button></td>';
+											}
+											?>
 										</tr>
-										<tr>
-											<td>2</td>
-											<td>Keluhan 2</td>
-											<td>07-08-2020</td>
-											<td>Diproses</td>
-											<td class="text-center"><button type="button" class="btn btn-success"
-													data-toggle="modal" data-target="#selesaiModal">Selesai</button>
-											</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Keluhan 3</td>
-											<td>06-08-2020</td>
-											<td>Selesai</td>
-											<td class="text-center"><button type="button" class="btn btn-secondary"
-													disabled>No Action</button></td>
-										</tr>
+										<?php
+									}
+										?>
 									</tbody>
 								</table>
 							</div>
