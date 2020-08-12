@@ -115,7 +115,8 @@
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">YourName</span>
+								<span
+									class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('username') ?></span>
 								<img class="img-profile rounded-circle"
 									src="<?php echo base_url('assets/account_circle.png'); ?>" />
 							</a>
@@ -149,8 +150,7 @@
 											<div class="name">Username</div>
 											<div class="value">
 												<div class="input-group">
-													<input class="input--style-5" type="text"
-														name="username_officer" />
+													<input class="input--style-5" type="text" name="username_officer" />
 												</div>
 											</div>
 										</div>
@@ -158,7 +158,8 @@
 											<div class="name">Password</div>
 											<div class="value">
 												<div class="input-group">
-													<input class="input--style-5" type="password" name="password_officer" />
+													<input class="input--style-5" type="password"
+														name="password_officer" />
 												</div>
 											</div>
 										</div>
