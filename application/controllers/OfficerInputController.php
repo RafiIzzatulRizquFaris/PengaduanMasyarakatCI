@@ -2,6 +2,10 @@
 class OfficerInputController extends CI_Controller{
     public function index()
     {
-        $this->load->view('admin/officerinputdashboard');
+        if ($this->session->userdata('status') == 'login') {
+            $this->load->view('admin/officerinputdashboard');
+        } else {
+            header("Location:".base_url().'LoginController/index');
+        }
     }
 }

@@ -2,6 +2,10 @@
 class UserDashboardController extends CI_Controller{
     public function index()
     {
-        $this->load->view('user/userdashboard');
+        if ($this->session->userdata('status') == 'login') {
+            $this->load->view('user/userdashboard');
+        } else {
+            header("Location:".base_url().'LoginController/index');
+        }
     }
 }
