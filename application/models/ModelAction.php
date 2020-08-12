@@ -37,6 +37,12 @@ class ModelAction extends CI_Model{
         return $data->num_rows();
     }
 
+    public function get_pengaduan()
+    {
+        $data = $this->db->get('pengaduan');
+        return $data->result();
+    }
+
     public function login_database($account)
     {
         $petugas = $this->db->get_where('Petugas',$account);
