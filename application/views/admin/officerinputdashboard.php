@@ -136,7 +136,7 @@
 						<div class="card-body">
 							<div class="card card-7">
 								<div class="card-body">
-									<form method="POST" action="invoice.php">
+									<form method="POST" action="<?php echo site_url('Action/insert_petugas'); ?>">
 										<div class="form-row">
 											<div class="name">Nama</div>
 											<div class="value">
@@ -178,25 +178,12 @@
 														<select name="position_officer">
 															<option disabled="disabled" selected="selected">Choose
 																option</option>
-															<option>Admin</option>
-															<option>Officer</option>
+															<option value="admin">Admin</option>
+															<option value="petugas">Officer</option>
 														</select>
 														<div class="select-dropdown"></div>
 													</div>
 												</div>
-											</div>
-										</div>
-										<div class="form-row p-t-20">
-											<label class="label label--block">Jenis Kelamin</label>
-											<div class="p-t-15">
-												<label class="radio-container m-r-55">Laki - laki
-													<input type="radio" name="gender_officer" />
-													<span class="checkmark"></span>
-												</label>
-												<label class="radio-container">Perempuan
-													<input type="radio" name="gender_officer" />
-													<span class="checkmark"></span>
-												</label>
 											</div>
 										</div>
 										<div class="text-center">
