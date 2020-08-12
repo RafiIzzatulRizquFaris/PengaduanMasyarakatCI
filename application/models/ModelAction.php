@@ -25,6 +25,20 @@ class ModelAction extends CI_Model{
         header("Location:".base_url().'LoginController/index');
     }
 
+    public function save_petugas()
+    {
+        $data = array(
+            'nama_petugas' => $this->input->post('nama_officer'),
+            'username' => $this->input->post('username_officer'),
+            'password' => $this->input->post('password_officer'),
+            'telp' => $this->input->post('telepon_officer'),
+            'level' => $this->input->post('position_officer'),
+        );
+
+        $this->db->insert('Petugas', $data);
+        header("Location:".base_url().'OfficerInputController/index');
+    }
+
     public function get_masyarakat()
     {
         $data = $this->db->get('Petugas');
