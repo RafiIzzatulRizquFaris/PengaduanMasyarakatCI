@@ -12,6 +12,11 @@ class Action extends CI_Controller{
         $this->ModelAction->save_database();
     }
 
+    public function insert_petugas()
+    {
+        $this->ModelAction->save_petugas();
+    }
+
     public function login()
     {
         $username = $this->input->post('username');
