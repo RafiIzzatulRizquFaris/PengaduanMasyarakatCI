@@ -39,7 +39,14 @@ class ModelAction extends CI_Model{
 
     public function login_database($account)
     {
-        return $this->db->get_where('Petugas',$account);
+        $petugas = $this->db->get_where('Petugas',$account);
+        $masyarakat = $this->db->get_where('masyarakat',$account);
+        if ($petugas->result() == null) {
+            return $masyarakat;
+        }else{
+            return $petugas;
+        }
+        
     }
 
 }
