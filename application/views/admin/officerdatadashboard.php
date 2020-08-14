@@ -34,6 +34,16 @@
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
+	<script src="<?php echo base_url('js/scripts.js');?>"></script>
+	<script>
+		function ondelete(id, officername) {
+			$("#delete-data").html("")
+			let layout =
+				`<form action="<?php echo site_url('Action/delete_petugas');?>" method="POST" >Menghapus <input type="text" name="officer_name" readonly value="${officername}"> dengan id <input type="text" name="petugas_id" readonly value="${id}"><button type="submit" class="btn btn--radius-2 btn-danger btn-block mt-3">Delete</button></form>`
+			$("#delete-data").append(layout)
+		}
+
+	</script>
 
 </head>
 
@@ -124,7 +134,8 @@
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('username') ?></span>
+								<span
+									class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('username') ?></span>
 								<img class="img-profile rounded-circle"
 									src="<?php echo base_url('assets/account_circle.png');?>">
 							</a>
@@ -170,7 +181,8 @@
 												<button type="button" class="btn btn-warning" data-toggle="modal"
 													data-target="#editModal">Edit</button>
 												<button type="button" class="btn btn-danger" data-toggle="modal"
-													data-target="#deleteModal">Delete</button>
+													data-target="#deleteModal"
+													onclick="ondelete('<?php echo $datap->id_petugas?>', '<?php echo $datap->nama_petugas?>')">Delete</button>
 											</td>
 										</tr>
 										<?php
@@ -309,18 +321,18 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+					<h5 class="modal-title" id="staticBackdropLabel">Hapus Officer</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
-					<h1>Delete</h1>
+				<div class="modal-body" id="delete-data">
+
 				</div>
-				<div class="modal-footer">
+				<!-- <div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary">Understood</button>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

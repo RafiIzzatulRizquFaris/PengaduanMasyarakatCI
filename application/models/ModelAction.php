@@ -39,6 +39,16 @@ class ModelAction extends CI_Model{
         header("Location:".base_url().'OfficerInputController/index');
     }
 
+    public function delete_officer()
+    {
+        $data = array(
+            'id_petugas' => $this->input->post('petugas_id')
+        );
+
+        $this->db->delete('Petugas', $data);
+        header("Location:".base_url().'OfficerDataController/index');
+    }
+
     public function get_masyarakat()
     {
         $data = $this->db->get('Petugas');
