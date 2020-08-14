@@ -36,11 +36,85 @@
 	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
 	<script src="<?php echo base_url('js/scripts.js');?>"></script>
 	<script>
+
 		function ondelete(id, officername) {
 			$("#delete-data").html("")
 			let layout =
 				`<form action="<?php echo site_url('Action/delete_petugas');?>" method="POST" >Menghapus <input type="text" name="officer_name" readonly value="${officername}"> dengan id <input type="text" name="petugas_id" readonly value="${id}"><button type="submit" class="btn btn--radius-2 btn-danger btn-block mt-3">Delete</button></form>`
 			$("#delete-data").append(layout)
+		}
+
+		function onupdate(id, officername, officerusername, officerphone) {
+			$("#update-data").html("");
+			let layoutupdate = `<div class="card card-7">
+						<div class="card-body">
+							<form method="POST" action="<?php echo site_url('Action/update_petugas'); ?>">
+								<div class="form-row">
+									<div class="name">ID</div>
+									<div class="value">
+										<div class="input-group">
+											<input class="input--style-5" type="text" name="id_officer" readonly value="${id}"/>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="name">Nama</div>
+									<div class="value">
+										<div class="input-group">
+											<input class="input--style-5" type="text" name="name_officer" value="${officername}"/>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="name">Username</div>
+									<div class="value">
+										<div class="input-group">
+											<input class="input--style-5" type="text" name="username_officer" value="${officerusername}"/>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="name">Password</div>
+									<div class="value">
+										<div class="input-group">
+											<input class="input--style-5" type="password"
+												name="password_officer" />
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="name">No Telepon</div>
+									<div class="value">
+										<div class="input-group">
+											<input type="text" class="input--style-5" name="telepon_officer" value="${officerphone}">
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="name">Position</div>
+									<div class="value">
+										<div class="input-group">
+											<div class="rs-select2 js-select-simple select--no-search">
+												<select name="position_officer">
+													<option disabled="disabled" selected="selected">Choose
+														option</option>
+													<option value="admin">Admin</option>
+													<option value="petugas">Officer</option>
+												</select>
+												<div class="select-dropdown"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-center">
+									<button class="btn btn--radius-2 btn-success btn-block btn-lg" type="submit">
+										Submit
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>`
+			$("#update-data").append(layoutupdate)
 		}
 
 	</script>
@@ -179,7 +253,7 @@
 											<td><?php echo $datap->telp?></td>
 											<td>
 												<button type="button" class="btn btn-warning" data-toggle="modal"
-													data-target="#editModal">Edit</button>
+													data-target="#editModal" onclick="onupdate('<?php echo $datap->id_petugas?>', '<?php echo $datap->nama_petugas?>', '<?php echo $datap->username?>', '<?php echo $datap->telp?>')">Edit</button>
 												<button type="button" class="btn btn-danger" data-toggle="modal"
 													data-target="#deleteModal"
 													onclick="ondelete('<?php echo $datap->id_petugas?>', '<?php echo $datap->nama_petugas?>')">Delete</button>
@@ -226,91 +300,11 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
-					<div class="card card-7">
-						<div class="card-body">
-							<form method="POST" action="invoice.php">
-								<div class="form-row">
-									<div class="name">ID</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="text" name="id_officer" disabled />
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Nama</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="text" name="nama_officer" />
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Username</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="text" name="username_officer" />
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Password</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="password" name="password_officer" />
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">No Telepon</div>
-									<div class="value">
-										<div class="input-group">
-											<input type="text" class="input--style-5" name="telepon_officer">
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Position</div>
-									<div class="value">
-										<div class="input-group">
-											<div class="rs-select2 js-select-simple select--no-search">
-												<select name="position_officer">
-													<option disabled="disabled" selected="selected">Choose
-														option</option>
-													<option>Admin</option>
-													<option>Officer</option>
-												</select>
-												<div class="select-dropdown"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="form-row p-t-20">
-									<label class="label label--block">Jenis Kelamin</label>
-									<div class="p-t-15">
-										<label class="radio-container m-r-55">Laki - laki
-											<input type="radio" name="gender_officer" />
-											<span class="checkmark"></span>
-										</label>
-										<label class="radio-container">Perempuan
-											<input type="radio" name="gender_officer" />
-											<span class="checkmark"></span>
-										</label>
-									</div>
-								</div>
-								<div class="text-center">
-									<button class="btn btn--radius-2 btn-success btn-block btn-lg" type="submit">
-										Submit
-									</button>
-								</div>
-							</form>
-						</div>
-					</div>
+				<div class="modal-body" id="update-data">
 				</div>
-				<div class="modal-footer">
+				<!-- <div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

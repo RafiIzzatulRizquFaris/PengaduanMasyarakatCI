@@ -49,6 +49,22 @@ class ModelAction extends CI_Model{
         header("Location:".base_url().'OfficerDataController/index');
     }
 
+    public function update_officer()
+    {
+        $data = array(
+            'nama_petugas' => $this->input->post('name_officer'),
+            'username' => $this->input->post('username_officer'),
+            'password' => $this->input->post('password_officer'),
+            'telp' => $this->input->post('telepon_officer'),
+            'level' => $this->input->post('position_officer'),
+        );
+
+        $where = array('id_petugas' => $this->input->post('id_officer'),);
+
+        $this->db->update('Petugas', $data, $where);
+        header("Location:".base_url().'OfficerDataController/index');
+    }
+
     public function get_masyarakat()
     {
         $data = $this->db->get('Petugas');

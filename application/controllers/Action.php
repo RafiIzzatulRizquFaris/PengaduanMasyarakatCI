@@ -22,6 +22,11 @@ class Action extends CI_Controller{
         $this->ModelAction->delete_officer();
     }
 
+    public function update_petugas()
+    {
+        $this->ModelAction->update_officer();
+    }
+
     public function login()
     {
         $username = $this->input->post('username');
