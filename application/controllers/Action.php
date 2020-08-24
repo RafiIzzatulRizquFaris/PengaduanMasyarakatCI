@@ -38,8 +38,8 @@ class Action extends CI_Controller{
         );
 
         $check = $this->ModelAction->login_database($account)->num_rows();
-        $role = $this->ModelAction->login_database($account)->row(0)->level;
         if ($check > 0) {
+            $role = $this->ModelAction->login_database($account)->row(0)->level;
             if ($role == 'admin' || $role == 'petugas') {
                 $current_role = $this->ModelAction->login_database($account)->row(0)->level;
                 $current_id = $this->ModelAction->login_database($account)->row(0)->id_petugas;
