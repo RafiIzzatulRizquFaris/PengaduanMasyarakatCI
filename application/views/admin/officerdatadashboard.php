@@ -36,16 +36,16 @@
 	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
 	<script src="<?php echo base_url('js/scripts.js');?>"></script>
 	<script>
-	function ondelete(id, officername) {
-	$("#delete-data").html("")
-	let layout =
-		`<form action="<?php echo site_url('Action/delete_petugas');?>" method="POST" >Menghapus <input type="text" name="officer_name" readonly value="${officername}"> dengan id <input type="text" name="petugas_id" readonly value="${id}"><button type="submit" class="btn btn--radius-2 btn-danger btn-block mt-3">Delete</button></form>`
-	$("#delete-data").append(layout)
-}
+		function ondelete(id, officername) {
+			$("#delete-data").html("")
+			let layout =
+				`<form action="<?php echo site_url('Action/delete_petugas');?>" method="POST" >Menghapus <input type="text" name="officer_name" readonly value="${officername}"> dengan id <input type="text" name="petugas_id" readonly value="${id}"><button type="submit" class="btn btn--radius-2 btn-danger btn-block mt-3">Delete</button></form>`
+			$("#delete-data").append(layout)
+		}
 
-function onupdate(id, officername, officerusername, officerphone) {
-	$("#update-data").html("");
-	let layoutupdate = `<div class="card card-7">
+		function onupdate(id, officername, officerusername, officerphone) {
+			$("#update-data").html("");
+			let layoutupdate = `<div class="card card-7">
 						<div class="card-body">
 							<form method="POST" action="<?php echo site_url('Action/update_petugas'); ?>">
 								<div class="form-row">
@@ -113,8 +113,8 @@ function onupdate(id, officername, officerusername, officerphone) {
 							</form>
 						</div>
 					</div>`
-	$("#update-data").append(layoutupdate)
-}
+			$("#update-data").append(layoutupdate)
+		}
 
 	</script>
 
@@ -222,6 +222,12 @@ function onupdate(id, officername, officerusername, officerphone) {
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
+					<div class="container my-3 text-right">
+						<button type="button" class="btn btn-primary"><a href="<?= site_url('Action/print_pdf') ?>"
+								style="text-decoration: none; color: white;">Cetak
+								PDF</a></button>
+					</div>
+
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
@@ -252,7 +258,8 @@ function onupdate(id, officername, officerusername, officerphone) {
 											<td><?php echo $datap->telp?></td>
 											<td>
 												<button type="button" class="btn btn-warning" data-toggle="modal"
-													data-target="#editModal" onclick="onupdate('<?php echo $datap->id_petugas?>', '<?php echo $datap->nama_petugas?>', '<?php echo $datap->username?>', '<?php echo $datap->telp?>')">Edit</button>
+													data-target="#editModal"
+													onclick="onupdate('<?php echo $datap->id_petugas?>', '<?php echo $datap->nama_petugas?>', '<?php echo $datap->username?>', '<?php echo $datap->telp?>')">Edit</button>
 												<button type="button" class="btn btn-danger" data-toggle="modal"
 													data-target="#deleteModal"
 													onclick="ondelete('<?php echo $datap->id_petugas?>', '<?php echo $datap->nama_petugas?>')">Delete</button>

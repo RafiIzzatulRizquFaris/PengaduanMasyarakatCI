@@ -34,6 +34,18 @@
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
+	<script>
+	function onProsesLaporan(id, judul, tgl, isi) {
+		$("#proses-laporan").html("")
+	let layout =
+		`<form action="<?php echo site_url('AduanController/delete_petugas');?>" method="POST" >Menghapus <input type="text" name="officer_name" readonly value="${officername}"> dengan id <input type="text" name="petugas_id" readonly value="${id}"><button type="submit" class="btn btn--radius-2 btn-danger btn-block mt-3">Delete</button></form>`
+	$("#proses-laporan").append(layout)
+	}
+
+	function onSelesaiLaporan(id, judul, tgl, isi) {
+		
+	}
+	</script>
 </head>
 
 <body id="page-top">
@@ -170,9 +182,9 @@
 											<td><?= $data->status?></td>
 											<?php
 											if ($data->status == 'menunggu') {
-												echo '<td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prosesModal">Proses</button></td>';
+												echo '<td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prosesModal" onclick="onProsesLaporan('.$data->id_pengaduan.', '.$data->judul.', '.$data->tgl_pengaduan.', '.$data->isi_laporan.')">Proses</button></td>';
 											}elseif ($data->status == 'proses') {
-												echo '<td class="text-center"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#selesaiModal">Selesai</button></td>';
+												echo '<td class="text-center"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#selesaiModal" onclick="onSelesaiLaporan('.$data->id_pengaduan.', '.$data->judul.', '.$data->tgl_pengaduan.', '.$data->isi_laporan.')">Selesai</button></td>';
 											}elseif ($data->status == 'selesai') {
 												echo '<td class="text-center"><button type="button" class="btn btn-secondary" disabled>No Action</button></td>';
 											}
@@ -219,11 +231,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
-					<h1>Processing</h1>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+				<div class="modal-body" id="proses-laporan">
 				</div>
 			</div>
 		</div>

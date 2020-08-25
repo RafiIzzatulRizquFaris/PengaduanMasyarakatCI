@@ -1,4 +1,8 @@
 <?php
+
+// require 'vendor/autoload.php';
+// use Spipu\Html2Pdf\Html2Pdf;
+
 class Action extends CI_Controller{
 
     public function __construct()
@@ -78,5 +82,23 @@ class Action extends CI_Controller{
     public function logout (){
         $this->session->sess_destroy();
         redirect(base_url());
+    }
+
+    public function print_pdf()
+    {
+        // ob_start(); 
+        $data['petugas'] = $this->ModelAction->get_masyarakat();
+        // $this->load->view('admin/preview_admin', $data);
+
+        // $html = ob_get_contents();
+        // ob_end_clean();
+        // $pdf = new Html2pdf('P', 'A4', 'en');
+        // $pdf->WriteHTML($html);
+        // $pdf->Output('Data'.date('d-m-Y').'.pdf', 'D');
+
+        $this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'potrait');
+		$this->pdf->filename = "laporan-data.pdf";
+		$this->pdf->load_view('admin/preview_admin', $data);
     }
 }
