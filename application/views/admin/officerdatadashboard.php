@@ -226,6 +226,9 @@
 						<button type="button" class="btn btn-primary"><a href="<?= site_url('Action/print_pdf') ?>"
 								style="text-decoration: none; color: white;">Cetak
 								PDF</a></button>
+						<button type="button" class="btn btn-primary"><a href="<?= site_url('Action/print_xls') ?>"
+								style="text-decoration: none; color: white;">Cetak
+								XLS</a></button>
 					</div>
 
 					<!-- DataTales Example -->

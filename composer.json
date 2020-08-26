@@ -13,7 +13,8 @@
 	"require": {
 		"php": ">=5.3.7",
 		"spipu/html2pdf": "^5.2",
-		"dompdf/dompdf": "^0.8.5"
+		"dompdf/dompdf": "^0.8.5",
+		"phpoffice/phpspreadsheet": "^1.14"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
