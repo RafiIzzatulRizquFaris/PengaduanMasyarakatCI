@@ -35,11 +35,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
 	<script>
-	function onProsesLaporan(id, judul, tgl, isi) {
-		$("#proses-laporan").html("")
+	function print() {
+		console.log("dasdasd");
+	}
+	function onProsesLaporan(id, judul, tgl, isi, last) {
+		$("#proses-report").html("")
 	let layout =
-		`<form action="<?php echo site_url('AduanController/delete_petugas');?>" method="POST" >Menghapus <input type="text" name="officer_name" readonly value="${officername}"> dengan id <input type="text" name="petugas_id" readonly value="${id}"><button type="submit" class="btn btn--radius-2 btn-danger btn-block mt-3">Delete</button></form>`
-	$("#proses-laporan").append(layout)
+		`<form action="<?php echo site_url('AduanController/prosesLaporan');?>" method="POST" >Preses laporan : <input type="text" name="report_title" readonly value="${judul}"> dengan id : <input type="text" name="report_id" readonly value="${id}"><button type="submit" class="btn btn--radius-2 btn-primary btn-block mt-3">Proses</button></form>`
+	$("#proses-report").append(layout)
 	}
 
 	function onSelesaiLaporan(id, judul, tgl, isi) {
@@ -173,7 +176,6 @@
 									<tbody>
 									<?php
 									foreach ($pengaduan as $data) {
-										# code...
 									?>
 										<tr>
 											<td><?= $data->id_pengaduan?></td>
@@ -181,10 +183,11 @@
 											<td><?= $data->tgl_pengaduan?></td>
 											<td><?= $data->status?></td>
 											<?php
+											$strconcat = "'";
 											if ($data->status == 'menunggu') {
-												echo '<td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prosesModal" onclick="onProsesLaporan('.$data->id_pengaduan.', '.$data->judul.', '.$data->tgl_pengaduan.', '.$data->isi_laporan.')">Proses</button></td>';
+												echo '<td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prosesModal" onclick="onProsesLaporan('.$strconcat.''.$data->id_pengaduan.''.$strconcat.', '.$strconcat.''.$data->judul.''.$strconcat.', '.$strconcat.''.$data->tgl_pengaduan.''.$strconcat.', '.$strconcat.''.$data->isi_laporan.''.$strconcat.')">Proses</button></td>';
 											}elseif ($data->status == 'proses') {
-												echo '<td class="text-center"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#selesaiModal" onclick="onSelesaiLaporan('.$data->id_pengaduan.', '.$data->judul.', '.$data->tgl_pengaduan.', '.$data->isi_laporan.')">Selesai</button></td>';
+												echo '<td class="text-center"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#selesaiModal" onclick="onSelesaiLaporan('.$strconcat.''.$data->id_pengaduan.''.$strconcat.', '.$strconcat.''.$data->judul.''.$strconcat.', '.$strconcat.''.$data->tgl_pengaduan.''.$strconcat.', '.$strconcat.''.$data->isi_laporan.''.$strconcat.')">Selesai</button></td>';
 											}elseif ($data->status == 'selesai') {
 												echo '<td class="text-center"><button type="button" class="btn btn-secondary" disabled>No Action</button></td>';
 											}
@@ -226,12 +229,12 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+					<h5 class="modal-title" id="staticBackdropLabel">Proses Laporan</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body" id="proses-laporan">
+				<div class="modal-body" id="proses-report">
 				</div>
 			</div>
 		</div>
@@ -277,10 +280,6 @@
 							</form>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Understood</button>
 				</div>
 			</div>
 		</div>

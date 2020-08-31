@@ -3,11 +3,11 @@ class AduanController extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('ModelAction');
+        $this->load->model('ModelAduan');
     }
 
     public function prosesLaporan()
     {
-        $this->ModelAction->prosesLaporanModel();
+        $this->ModelAduan->prosesLaporanModel();
     }
 }
