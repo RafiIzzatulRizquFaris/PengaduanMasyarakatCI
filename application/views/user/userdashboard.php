@@ -160,8 +160,8 @@
 										<tr>
 											<th><?php echo $data->id_pengaduan?></th>
 											<td><?php echo $data->tgl_pengaduan?></td>
-											<td><?php echo $data->nik?></td>
 											<td><?php echo $data->judul?></td>
+											<td><?php echo $data->status?></td>
 											<td><button type="button" class="btn btn-info" data-toggle="modal"
 													data-target="#infoModal">Info</button></td>
 										</tr>

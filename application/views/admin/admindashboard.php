@@ -35,20 +35,21 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
 	<script>
-	function print() {
-		console.log("dasdasd");
-	}
-	function onProsesLaporan(id, judul, tgl, isi, last) {
-		$("#proses-report").html("")
-	let layout =
-		`<form action="<?php echo site_url('AduanController/prosesLaporan');?>" method="POST" >Preses laporan : <input type="text" name="report_title" readonly value="${judul}"> dengan id : <input type="text" name="report_id" readonly value="${id}"><button type="submit" class="btn btn--radius-2 btn-primary btn-block mt-3">Proses</button></form>`
-	$("#proses-report").append(layout)
-	}
+		function print() {
+			console.log("dasdasd");
+		}
 
-	function onSelesaiLaporan(id, judul, tgl, isi) {
-		$("#selesai-report").html("")
-	let layout =
-		`<form method="POST" action="<?php echo site_url('AduanController/selesaiLaporan') ?>">
+		function onProsesLaporan(id, judul, tgl, isi, foto) {
+			$("#proses-report").html("")
+			let layout =
+				`<form action="<?php echo site_url('AduanController/prosesLaporan');?>" method="POST" >Preses laporan : <input type="text" name="report_title" readonly value="${judul}"><br><br> Dengan id : <input type="text" name="report_id" readonly value="${id}"><br><br>Isi laporan :</br>${isi}<br><br>Bukti : <br><img src="<?php echo base_url('assets/');?>${foto}" width="300"><button type="submit" class="btn btn--radius-2 btn-primary btn-block mt-3">Proses</button></form>`
+			$("#proses-report").append(layout)
+		}
+
+		function onSelesaiLaporan(id, judul, tgl, isi) {
+			$("#selesai-report").html("")
+			let layout =
+				`<form method="POST" action="<?php echo site_url('AduanController/selesaiLaporan') ?>">
 								<div class="form-row">
 									<div class="name">ID</div>
 									<div class="value">
@@ -72,8 +73,9 @@
 									</button>
 								</div>
 							</form>`
-	$("#selesai-report").append(layout)
-	}
+			$("#selesai-report").append(layout)
+		}
+
 	</script>
 </head>
 
@@ -164,7 +166,8 @@
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('username') ?></span>
+								<span
+									class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('username') ?></span>
 								<img class="img-profile rounded-circle"
 									src="<?php echo base_url('assets/account_circle.png'); ?>">
 							</a>
@@ -200,7 +203,7 @@
 										</tr>
 									</thead>
 									<tbody>
-									<?php
+										<?php
 									foreach ($pengaduan as $data) {
 									?>
 										<tr>
@@ -211,7 +214,7 @@
 											<?php
 											$strconcat = "'";
 											if ($data->status == 'menunggu') {
-												echo '<td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prosesModal" onclick="onProsesLaporan('.$strconcat.''.$data->id_pengaduan.''.$strconcat.', '.$strconcat.''.$data->judul.''.$strconcat.', '.$strconcat.''.$data->tgl_pengaduan.''.$strconcat.', '.$strconcat.''.$data->isi_laporan.''.$strconcat.')">Proses</button></td>';
+												echo '<td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prosesModal" onclick="onProsesLaporan('.$strconcat.''.$data->id_pengaduan.''.$strconcat.', '.$strconcat.''.$data->judul.''.$strconcat.', '.$strconcat.''.$data->tgl_pengaduan.''.$strconcat.', '.$strconcat.''.$data->isi_laporan.''.$strconcat.', '.$strconcat.''.$data->foto.''.$strconcat.')">Proses</button></td>';
 											}elseif ($data->status == 'proses') {
 												echo '<td class="text-center"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#selesaiModal" onclick="onSelesaiLaporan('.$strconcat.''.$data->id_pengaduan.''.$strconcat.', '.$strconcat.''.$data->judul.''.$strconcat.', '.$strconcat.''.$data->tgl_pengaduan.''.$strconcat.', '.$strconcat.''.$data->isi_laporan.''.$strconcat.')">Selesai</button></td>';
 											}elseif ($data->status == 'selesai') {

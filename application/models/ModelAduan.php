@@ -45,7 +45,7 @@ class ModelAduan extends CI_Model{
     public function insertLaporanModel()
     {
 
-        $foto = $_FILES['foto_report']['name'];
+        $foto = $_FILES['foto_report']['tmp_name'];
         if ($foto = '') {
             // kosong
         } else {
