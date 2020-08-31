@@ -135,20 +135,12 @@
 						<div class="card-body">
 							<div class="card card-7">
 								<div class="card-body">
-									<form method="POST" action="invoice.php">
-										<div class="form-row">
-											<div class="name">NIK</div>
-											<div class="value">
-												<div class="input-group">
-													<input class="input--style-5" type="text" name="nik_pengaduan" disabled />
-												</div>
-											</div>
-										</div>
+									<form method="POST" action="<?php echo site_url('AduanController/insertLaporan'); ?>" enctype="multipart/form-data">
 										<div class="form-row">
 											<div class="name">Judul Pengaduan</div>
 											<div class="value">
 												<div class="input-group">
-													<input class="input--style-5" type="text" name="judul_pengaduan" />
+													<input class="input--style-5" type="text" name="judul_report" />
 												</div>
 											</div>
 										</div>
@@ -157,7 +149,7 @@
 											<div class="value">
 												<div class="input-group text-justify">
 													<!-- <input type="text" class="input--style-5 input-group-text" name="isi_pengaduan"> -->
-													<textarea class="form-control input--style-5 input-group-text"></textarea>
+													<textarea class="form-control input--style-5 input-group-text" name="isi_report"></textarea>
 												</div>
 											</div>
 										</div>
@@ -165,7 +157,7 @@
 											<div class="name">Bukti Pengaduan</div>
 											<div class="value">
 												<div class="input-group">
-													<input type="file" class="form-control-file input--style-5" id="bukti_pengaduan">
+													<input type="file" class="form-control-file input--style-5" id="bukti_pengaduan" name="foto_report">
 												</div>
 											</div>
 										</div>

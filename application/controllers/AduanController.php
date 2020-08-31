@@ -10,4 +10,9 @@ class AduanController extends CI_Controller{
     {
         $this->ModelAduan->prosesLaporanModel();
     }
+
+    public function insertLaporan()
+    {
+        $this->ModelAduan->insertLaporanModel();
+    }
 }
