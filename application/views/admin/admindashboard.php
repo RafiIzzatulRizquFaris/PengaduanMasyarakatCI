@@ -61,7 +61,7 @@
 									<div class="name">Tanggapan</div>
 									<div class="value">
 										<div class="input-group">
-											<textarea class="form-control input--style-5 input-group-text" name="tanggapan_pengaduan"
+											<textarea class="form-control input--style-5 input-group-text" name="report_resp"
 												rows="3"></textarea>
 										</div>
 									</div>
