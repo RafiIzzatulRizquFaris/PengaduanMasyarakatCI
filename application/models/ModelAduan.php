@@ -76,4 +76,13 @@ class ModelAduan extends CI_Model{
         header("Location:".base_url().'UserDashboardController/index');
     }
 
+    public function detailLaporanModel($id)
+    {
+        $where = array(
+            'id_pengaduan' => $id,
+        );
+        $query = $this->db->get_where('tanggapan', $where);
+        return $query;
+    }
+
 }

@@ -29,9 +29,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
 	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
 
@@ -162,8 +159,9 @@
 											<td><?php echo $data->tgl_pengaduan?></td>
 											<td><?php echo $data->judul?></td>
 											<td><?php echo $data->status?></td>
-											<td><button type="button" class="btn btn-info" data-toggle="modal"
-													data-target="#infoModal">Info</button></td>
+											<td><button type="button" class="btn btn-info view-data" id="<?php echo $data->id_pengaduan?>">Info</button></td>
+											<!-- data-toggle="modal"
+													data-target="#infoModal" -->
 										</tr>
 										<?php
 										}
@@ -201,14 +199,13 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+					<h5 class="modal-title" id="staticBackdropLabel">Tanggapan</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-                    <h1>Judul</h1>
-                    <p>keterangan</p>
+					<div id="detail_result"></div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
@@ -236,6 +233,26 @@
 			</div>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> 
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+	</script>
+	<script type="text/javascript">
+        $(document).ready(function(){
+            $('.view-data').click(function(){
+                var id = $(this).attr('id');
+                $.ajax({
+                    url: "<?php echo base_url() ?>AduanController/detailLaporan",
+                    method: "POST",
+                    data: {id:id},
+                    success: function(data){
+                        $('#detail_result').html(data);
+                        $('#infoModal').modal('show')
+                    }
+             });
+         });
+     });  
+    </script>
 </body>
 
 </html>
