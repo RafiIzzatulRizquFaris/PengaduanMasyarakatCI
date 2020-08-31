@@ -41,7 +41,7 @@ class AduanController extends CI_Controller{
             }
         }
         else {
-         echo '<center><ul class="list-group"><li class="list-group-item">'.'Select a Phone'.'</li></ul></center>';
+         echo 'Tidak ada tanggapan';
         }
     }
 }

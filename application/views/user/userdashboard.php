@@ -10,8 +10,6 @@
 	<meta name="author" content="">
 
 	<title>User Dashboard</title>
-
-	<!-- Custom fonts for this template-->
 	<link
 		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 		rel="stylesheet">
@@ -160,8 +158,6 @@
 											<td><?php echo $data->judul?></td>
 											<td><?php echo $data->status?></td>
 											<td><button type="button" class="btn btn-info view-data" id="<?php echo $data->id_pengaduan?>">Info</button></td>
-											<!-- data-toggle="modal"
-													data-target="#infoModal" -->
 										</tr>
 										<?php
 										}
@@ -242,7 +238,7 @@
             $('.view-data').click(function(){
                 var id = $(this).attr('id');
                 $.ajax({
-                    url: "<?php echo base_url() ?>AduanController/detailLaporan",
+                    url: "<?=base_url()?>AduanController/detailLaporan",
                     method: "POST",
                     data: {id:id},
                     success: function(data){
