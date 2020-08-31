@@ -154,30 +154,20 @@
 										</tr>
 									</thead>
 									<tbody>
+									<?php
+										foreach ($report as $data) {
+										?>
 										<tr>
-											<td>1</td>
-											<td>2011/04/25</td>
-											<td>System Architect</td>
-											<td>Edinburgh</td>
+											<th><?php echo $data->id_pengaduan?></th>
+											<td><?php echo $data->tgl_pengaduan?></td>
+											<td><?php echo $data->nik?></td>
+											<td><?php echo $data->judul?></td>
 											<td><button type="button" class="btn btn-info" data-toggle="modal"
 													data-target="#infoModal">Info</button></td>
 										</tr>
-										<tr>
-											<td>2</td>
-											<td>2011/04/25</td>
-											<td>System Architect</td>
-											<td>Edinburgh</td>
-											<td><button type="button" class="btn btn-info" data-toggle="modal"
-													data-target="#infoModal">Info</button></td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>2011/04/25</td>
-											<td>System Architect</td>
-											<td>Edinburgh</td>
-											<td><button type="button" class="btn btn-info" data-toggle="modal"
-													data-target="#infoModal">Info</button></td>
-										</tr>
+										<?php
+										}
+										?>
 									</tbody>
 								</table>
 							</div>

@@ -1,6 +1,12 @@
 <?php
 class ModelAduan extends CI_Model{
 
+    public function getLaporan()
+    {
+        $data = $this->db->get('pengaduan');
+        return $data->result();
+    }
+
     public function prosesLaporanModel()
     {
         $data = array(
