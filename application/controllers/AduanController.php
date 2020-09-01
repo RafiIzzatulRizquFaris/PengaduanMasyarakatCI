@@ -31,8 +31,11 @@ class AduanController extends CI_Controller{
             if (!empty($data)) {
                 foreach($data as $row){
                     $output .= '
-       
-                    <div class="text-justify">'.$row["tanggapan"].'</div><br>
+                    <p class="font-weight-bold">Tanggal  Tanggapan</p>
+                    <div class="text-justify">'.$row["tgl_tanggapan"].'</div>
+                    <br>
+                    <p class="font-weight-bold">Isi Tanggapan</p>
+                    <div class="text-justify">'.$row["tanggapan"].'</div>
                     ';
                    }    
                    echo $output;

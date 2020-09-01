@@ -181,6 +181,15 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
+					<div class="container my-3 text-right">
+						<button type="button" class="btn btn-primary"><a href="<?= site_url('Action/print_pdf_aduan') ?>"
+								style="text-decoration: none; color: white;">Cetak
+								PDF</a></button>
+						<button type="button" class="btn btn-primary"><a href="<?= site_url('Action/print_xls_aduan') ?>"
+								style="text-decoration: none; color: white;">Cetak
+								XLS</a></button>
+					</div>
+
 					<!-- Page Heading -->
 					<h1 class="h3 mb-2 text-gray-800">Data Pengaduan</h1>
 					<p class="mb-4">Mencakup segala data pengaduan yang telah dimasukkan oleh masyarakat</p>
