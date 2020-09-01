@@ -6,9 +6,6 @@
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary text-center">Data Pengaduan</h6>
-						</div>
 						<div class="card-body">
 							<div class="table-responsive">
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border="1">
@@ -17,8 +14,8 @@
 											<th>ID</th>
 											<th>Judul Pengaduan</th>
 											<th>Tanggal</th>
-											<th>Status</th>
-											<th class="text-center">Action</th>
+											<th>Isi Pengaduan</th>
+											<th class="text-center">Status</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -29,6 +26,7 @@
 											<td><?= $data->id_pengaduan?></td>
 											<td><?= $data->judul?></td>
 											<td><?= $data->tgl_pengaduan?></td>
+											<td><?= $data->isi_laporan?></td>
 											<td><?= $data->status?></td>
 										</tr>
 										<?php
