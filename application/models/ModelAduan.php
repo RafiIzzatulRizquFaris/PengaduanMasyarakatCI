@@ -32,7 +32,6 @@ class ModelAduan extends CI_Model{
 
         $this->db->insert('tanggapan', $data);
         $this->db->update('pengaduan', $data_update, $where);
-        header("Location:".base_url().'AdminController/index');
     }
 
     public function insertLaporanModel()
@@ -67,6 +66,15 @@ class ModelAduan extends CI_Model{
 
         $this->db->insert('pengaduan', $data);
         header("Location:".base_url().'UserDashboardController/index');
+    }
+
+    public function detailSelesaiLaporan($id)
+    {
+        $where = array(
+            'id_pengaduan' => $id,
+        );
+        $query = $this->db->get_where('pengaduan', $where);
+        return $query;
     }
 
     public function detailProsesLaporan($id)
