@@ -17,64 +17,9 @@
 	<!-- Custom styles for this template-->
 	<link href="<?php echo base_url('css/sb-admin-2.min.css');?>" rel="stylesheet">
 	<link href="<?php echo base_url('css/main.css');?>" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
-	</script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
-	<script>
-		function print() {
-			console.log("dasdasd");
-		}
-
-		function onProsesLaporan(id, judul, tgl, isi, foto) {
-			$("#proses-report").html("")
-			let layout =
-				`<form action="<?php echo site_url('AduanController/prosesLaporan');?>" method="POST" >Preses laporan : <input type="text" name="report_title" readonly value="${judul}"><br><br> Dengan id : <input type="text" name="report_id" readonly value="${id}"><br><br>Isi laporan :</br>${isi}<br><br>Bukti : <br><img src="<?php echo base_url('assets/');?>${foto}" width="300"><button type="submit" class="btn btn--radius-2 btn-primary btn-block mt-3">Proses</button></form>`
-			$("#proses-report").append(layout)
-		}
-
-		function onSelesaiLaporan(id, judul, tgl, isi) {
-			$("#selesai-report").html("")
-			let layout =
-				`<form method="POST" action="<?php echo site_url('AduanController/selesaiLaporan') ?>">
-								<div class="form-row">
-									<div class="name">ID</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="text" name="report_id" readonly value="${id}"/>
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Tanggapan</div>
-									<div class="value">
-										<div class="input-group">
-											<textarea class="form-control input--style-5 input-group-text" name="report_resp"
-												rows="3"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="text-center">
-									<button class="btn btn--radius-2 btn-success btn-block btn-lg" type="submit">
-										Submit
-									</button>
-								</div>
-							</form>`
-			$("#selesai-report").append(layout)
-		}
-
-	</script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body id="page-top">
@@ -180,10 +125,12 @@
 				<div class="container-fluid">
 
 					<div class="container my-3 text-right">
-						<button type="button" class="btn btn-primary"><a href="<?= site_url('Action/print_pdf_aduan') ?>"
+						<button type="button" class="btn btn-primary"><a
+								href="<?= site_url('Action/print_pdf_aduan') ?>"
 								style="text-decoration: none; color: white;">Cetak
 								PDF</a></button>
-						<button type="button" class="btn btn-primary"><a href="<?= site_url('Action/print_xls_aduan') ?>"
+						<button type="button" class="btn btn-primary"><a
+								href="<?= site_url('Action/print_xls_aduan') ?>"
 								style="text-decoration: none; color: white;">Cetak
 								XLS</a></button>
 					</div>
@@ -209,29 +156,8 @@
 											<th class="text-center">Action</th>
 										</tr>
 									</thead>
-									<tbody>
-										<?php
-									foreach ($pengaduan as $data) {
-									?>
-										<tr>
-											<td><?= $data->id_pengaduan?></td>
-											<td><?= $data->judul?></td>
-											<td><?= $data->tgl_pengaduan?></td>
-											<td><?= $data->status?></td>
-											<?php
-											$strconcat = "'";
-											if ($data->status == 'menunggu') {
-												echo '<td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prosesModal" onclick="onProsesLaporan('.$strconcat.''.$data->id_pengaduan.''.$strconcat.', '.$strconcat.''.$data->judul.''.$strconcat.', '.$strconcat.''.$data->tgl_pengaduan.''.$strconcat.', '.$strconcat.''.$data->isi_laporan.''.$strconcat.', '.$strconcat.''.$data->foto.''.$strconcat.')">Proses</button></td>';
-											}elseif ($data->status == 'proses') {
-												echo '<td class="text-center"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#selesaiModal" onclick="onSelesaiLaporan('.$strconcat.''.$data->id_pengaduan.''.$strconcat.', '.$strconcat.''.$data->judul.''.$strconcat.', '.$strconcat.''.$data->tgl_pengaduan.''.$strconcat.', '.$strconcat.''.$data->isi_laporan.''.$strconcat.')">Selesai</button></td>';
-											}elseif ($data->status == 'selesai') {
-												echo '<td class="text-center"><button type="button" class="btn btn-secondary" disabled>No Action</button></td>';
-											}
-											?>
-										</tr>
-										<?php
-									}
-										?>
+									<tbody id="show_data">
+
 									</tbody>
 								</table>
 							</div>
@@ -316,6 +242,130 @@
 			</div>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+	</script>
+	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
+	</script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			let dataPengaduan = $('#dataTable').dataTable({
+				"bServerSide": false,
+				"processing": true,
+				"ajax": "<?=base_url('AdminController/pengaduanService')?>",
+				"order": [],
+				"columns": [{
+						"data": "0"
+					},
+					{
+						"data": "1"
+					},
+					{
+						"data": "2"
+					},
+					{
+						"data": "3"
+					},
+					{
+						"data": "4"
+					},
+				],
+			})
+
+
+			$('#dataTable').on('click', '.view-data-proses', function () {
+				console.log('masuk')
+				let id = $(this).attr('id');
+				$.ajax({
+					url: "<?=base_url('AdminController/detailProsesLaporan')?>",
+					method: "POST",
+					data: {
+						id: id
+					},
+					success: function (data) {
+						$('#proses-report').html(data)
+						$('#prosesModal').modal('show')
+
+						$('#form-proses-laporan').on('submit', function () {
+							console.log('masuk ke 2')
+							let idreport = $("input[name=report_id]").val()
+							$.ajax({
+								url: "<?=base_url('AduanController/prosesLaporan')?>",
+								method: "POST",
+								data: {
+									report_id: idreport
+								},
+								beforeSend: function () {
+									swal({
+										title: 'Menunggu',
+										html: 'Memproses data',
+										onOpen: () => {
+											swal.showLoading()
+										}
+									})
+								},
+								success: function (data) {
+									console.log(data)
+									dataPengaduan.api().ajax.reload(null,
+										false)
+									swal({
+										type: 'success',
+										title: 'Update Pengaduan',
+										text: 'Anda Berhasil Mengubah Pengaduan'
+									})
+									$('#prosesModal').modal('hide');
+								},
+							})
+							return false;
+						})
+					}
+				})
+			})
+		})
+
+	</script>
+
+	<script>
+		function onSelesaiLaporan(id, judul, tgl, isi) {
+			$("#selesai-report").html("")
+			let layout =
+				`<form method="POST" action="<?php echo site_url('AduanController/selesaiLaporan') ?>">
+								<div class="form-row">
+									<div class="name">ID</div>
+									<div class="value">
+										<div class="input-group">
+											<input class="input--style-5" type="text" name="report_id" readonly value="${id}"/>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="name">Tanggapan</div>
+									<div class="value">
+										<div class="input-group">
+											<textarea class="form-control input--style-5 input-group-text" name="report_resp"
+												rows="3"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="text-center">
+									<button class="btn btn--radius-2 btn-success btn-block btn-lg" type="submit">
+										Submit
+									</button>
+								</div>
+							</form>`
+			$("#selesai-report").append(layout)
+		}
+
+	</script>
 </body>
 
 </html>
