@@ -385,39 +385,6 @@
 		})
 
 	</script>
-
-	<script>
-		function onSelesaiLaporan(id, judul, tgl, isi) {
-			$("#selesai-report").html("")
-			let layout =
-				`<form method="POST" action="<?php echo site_url('AduanController/selesaiLaporan') ?>">
-								<div class="form-row">
-									<div class="name">ID</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="text" name="report_id" readonly value="${id}"/>
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Tanggapan</div>
-									<div class="value">
-										<div class="input-group">
-											<textarea class="form-control input--style-5 input-group-text" name="report_resp"
-												rows="3"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="text-center">
-									<button class="btn btn--radius-2 btn-success btn-block btn-lg" type="submit">
-										Submit
-									</button>
-								</div>
-							</form>`
-			$("#selesai-report").append(layout)
-		}
-
-	</script>
 </body>
 
 </html>
