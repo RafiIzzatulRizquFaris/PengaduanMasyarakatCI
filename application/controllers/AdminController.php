@@ -49,6 +49,52 @@ class AdminController extends CI_Controller{
         }
     }
 
+    public function detailSelesaiLaporan()
+    {
+        $id = $this->input->post('id');
+        if(isset($id) and !empty($id)){
+            $records = $this->ModelAduan->detailSelesaiLaporan($id);
+            $output = '';
+            $data = $records->result_array();
+            if (!empty($data)) {
+                foreach($data as $row){
+                    $output .= '
+                    <form id="form-selesai-laporan">
+								<div class="form-row">
+									<div class="name">ID</div>
+									<div class="value">
+										<div class="input-group">
+											<input class="input--style-5" type="text" name="report_id" readonly value="'.$row['id_pengaduan'].'"/>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="name">Tanggapan</div>
+									<div class="value">
+										<div class="input-group">
+											<textarea class="form-control input--style-5 input-group-text" name="report_resp" id="report_resp"
+												rows="3"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="text-center">
+									<button class="btn btn--radius-2 btn-success btn-block btn-lg" type="submit">
+										Submit
+									</button>
+								</div>
+							</form>
+                    ';
+                   }    
+                   echo $output;
+            }else{
+                echo 'Pilihan laporan salah';
+            }
+        }
+        else {
+         echo 'Tidak ada Laporan';
+        }
+    }
+
     public function pengaduanService()
     {
         $pengaduan = $this->ModelAction->get_pengaduan();
@@ -63,9 +109,9 @@ class AdminController extends CI_Controller{
             if ($value->status == 'menunggu') {
                 $button = '<td class="text-center"><button type="button" class="btn btn-primary view-data-proses" data-toggle="modal" data-target="#prosesModal" id="'.$value->id_pengaduan.'">Proses</button></td>';
             } else if ($value->status == 'proses') {
-                $button = '<td class="text-center view-data"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#selesaiModal" onclick="onSelesaiLaporan('.$strconcat.''.$value->id_pengaduan.''.$strconcat.', '.$strconcat.''.$value->judul.''.$strconcat.', '.$strconcat.''.$value->tgl_pengaduan.''.$strconcat.', '.$strconcat.''.$value->isi_laporan.''.$strconcat.', '.$strconcat.''.$value->foto.''.$strconcat.')">Selesai</button></td>';
+                $button = '<td class="text-center"><button type="button" class="btn btn-success view-data-selesai" data-toggle="modal" data-target="#selesaiModal" id="'.$value->id_pengaduan.'">Selesai</button></td>';
             } else if ($value->status == 'selesai') {
-                $button = '<td class="text-center view-data"><button type="button" class="btn btn-secondary" disabled>No Action</button></td>';
+                $button = '<td class="text-center"><button type="button" class="btn btn-secondary" disabled>No Action</button></td>';
             }
             $tbody[] = $button;
             $data[] = $tbody; 
