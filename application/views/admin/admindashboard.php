@@ -330,6 +330,58 @@
 					}
 				})
 			})
+
+			$('#dataTable').on('click', '.view-data-selesai', function () {
+				console.log('masuk')
+				let id = $(this).attr('id');
+				$.ajax({
+					url: "<?=base_url('AdminController/detailSelesaiLaporan')?>",
+					method: "POST",
+					data: {
+						id: id
+					},
+					success: function (data) {
+						$('#selesai-report').html(data)
+						$('#selesaiModal').modal('show')
+
+						$('#form-selesai-laporan').on('submit', function () {
+							console.log('masuk ke 2')
+							let idreport = $("input[name=report_id]").val()
+							let responsereport = $('#report_resp').val()
+
+							$.ajax({
+								url: "<?=base_url('AduanController/selesaiLaporan')?>",
+								method: "POST",
+								data: {
+									report_id: idreport,
+									report_resp: responsereport
+								},
+								beforeSend: function () {
+									swal({
+										title: 'Menunggu',
+										html: 'Memproses data',
+										onOpen: () => {
+											swal.showLoading()
+										}
+									})
+								},
+								success: function (data) {
+									console.log(data)
+									dataPengaduan.api().ajax.reload(null,
+										false)
+									swal({
+										type: 'success',
+										title: 'Selesai Pengaduan',
+										text: 'Anda Berhasil Mengubah Pengaduan'
+									})
+									$('#prosesModal').modal('hide');
+								},
+							})
+							return false;
+						})
+					}
+				})
+			})
 		})
 
 	</script>
