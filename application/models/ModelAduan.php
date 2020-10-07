@@ -7,16 +7,9 @@ class ModelAduan extends CI_Model{
         return $data->result();
     }
 
-    public function prosesLaporanModel()
+    public function prosesLaporanModel($data, $where)
     {
-        $data = array(
-            'status' => 'proses',
-        );
-
-        $where = array('id_pengaduan' => $this->input->post('report_id'),);
-
-        $this->db->update('pengaduan', $data, $where);
-        header("Location:".base_url().'AdminController/index');
+        return $this->db->update('pengaduan', $data, $where);
     }
 
     public function selesaiLaporanModel()
@@ -74,6 +67,15 @@ class ModelAduan extends CI_Model{
 
         $this->db->insert('pengaduan', $data);
         header("Location:".base_url().'UserDashboardController/index');
+    }
+
+    public function detailProsesLaporan($id)
+    {
+        $where = array(
+            'id_pengaduan' => $id,
+        );
+        $query = $this->db->get_where('pengaduan', $where);
+        return $query;
     }
 
     public function detailLaporanModel($id)
