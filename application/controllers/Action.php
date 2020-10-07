@@ -23,12 +23,14 @@ class Action extends CI_Controller{
 
     public function delete_petugas()
     {
-        $this->ModelAction->delete_officer();
+        $deletean = $this->ModelAction->delete_officer();
+        echo json_decode($deletean);
     }
 
     public function update_petugas()
     {
-        $this->ModelAction->update_officer();
+        $updatean = $this->ModelAction->update_officer();
+        echo json_encode($updatean);
     }
 
     public function login()

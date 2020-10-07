@@ -45,8 +45,7 @@ class ModelAction extends CI_Model{
             'id_petugas' => $this->input->post('petugas_id')
         );
 
-        $this->db->delete('Petugas', $data);
-        header("Location:".base_url().'OfficerDataController/index');
+        return $this->db->delete('Petugas', $data);
     }
 
     public function update_officer()
@@ -61,8 +60,7 @@ class ModelAction extends CI_Model{
 
         $where = array('id_petugas' => $this->input->post('id_officer'),);
 
-        $this->db->update('Petugas', $data, $where);
-        header("Location:".base_url().'OfficerDataController/index');
+        return $this->db->update('Petugas', $data, $where);
     }
 
     public function get_masyarakat()
@@ -93,6 +91,24 @@ class ModelAction extends CI_Model{
             return $petugas;
         }
         
+    }
+
+    public function detailOfficerEdit($id)
+    {
+        $where = array(
+            'id_petugas' => $id,
+        );
+        $query = $this->db->get_where('Petugas', $where);
+        return $query;
+    }
+
+    public function detailOfficerDelete($id)
+    {
+        $where = array(
+            'id_petugas' => $id,
+        );
+        $query = $this->db->get_where('Petugas', $where);
+        return $query;
     }
 
 }

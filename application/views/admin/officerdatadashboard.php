@@ -19,104 +19,8 @@
 	<!-- Custom styles for this template-->
 	<link href="<?php echo base_url('css/sb-admin-2.min.css');?>" rel="stylesheet">
 	<link href="<?php echo base_url('css/main.css');?>" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
-	</script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
-	<script src="<?php echo base_url('js/scripts.js');?>"></script>
-	<script>
-		function ondelete(id, officername) {
-			$("#delete-data").html("")
-			let layout =
-				`<form action="<?php echo site_url('Action/delete_petugas');?>" method="POST" >Menghapus <input type="text" name="officer_name" readonly value="${officername}"> dengan id <input type="text" name="petugas_id" readonly value="${id}"><button type="submit" class="btn btn--radius-2 btn-danger btn-block mt-3">Delete</button></form>`
-			$("#delete-data").append(layout)
-		}
-
-		function onupdate(id, officername, officerusername, officerphone) {
-			$("#update-data").html("");
-			let layoutupdate = `<div class="card card-7">
-						<div class="card-body">
-							<form method="POST" action="<?php echo site_url('Action/update_petugas'); ?>">
-								<div class="form-row">
-									<div class="name">ID</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="text" name="id_officer" readonly value="${id}"/>
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Nama</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="text" name="name_officer" value="${officername}"/>
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Username</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="text" name="username_officer" value="${officerusername}"/>
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Password</div>
-									<div class="value">
-										<div class="input-group">
-											<input class="input--style-5" type="password"
-												name="password_officer" />
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">No Telepon</div>
-									<div class="value">
-										<div class="input-group">
-											<input type="text" class="input--style-5" name="telepon_officer" value="${officerphone}">
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="name">Position</div>
-									<div class="value">
-										<div class="input-group">
-											<div class="rs-select2 js-select-simple select--no-search">
-												<select name="position_officer">
-													<option disabled="disabled" selected="selected">Choose
-														option</option>
-													<option value="admin">Admin</option>
-													<option value="petugas">Officer</option>
-												</select>
-												<div class="select-dropdown"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="text-center">
-									<button class="btn btn--radius-2 btn-success btn-block btn-lg" type="submit">
-										Submit
-									</button>
-								</div>
-							</form>
-						</div>
-					</div>`
-			$("#update-data").append(layoutupdate)
-		}
-
-	</script>
 
 </head>
 
@@ -250,27 +154,6 @@
 										</tr>
 									</thead>
 									<tbody>
-										<?php
-										foreach ($petugas as $datap) {
-										?>
-										<tr>
-											<th><?php echo $datap->id_petugas?></th>
-											<td><?php echo $datap->nama_petugas?></td>
-											<td><?php echo $datap->level?></td>
-											<td><?php echo $datap->username?></td>
-											<td><?php echo $datap->telp?></td>
-											<td>
-												<button type="button" class="btn btn-warning" data-toggle="modal"
-													data-target="#editModal"
-													onclick="onupdate('<?php echo $datap->id_petugas?>', '<?php echo $datap->nama_petugas?>', '<?php echo $datap->username?>', '<?php echo $datap->telp?>')">Edit</button>
-												<button type="button" class="btn btn-danger" data-toggle="modal"
-													data-target="#deleteModal"
-													onclick="ondelete('<?php echo $datap->id_petugas?>', '<?php echo $datap->nama_petugas?>')">Delete</button>
-											</td>
-										</tr>
-										<?php
-										}
-										?>
 									</tbody>
 								</table>
 							</div>
@@ -359,6 +242,162 @@
 			</div>
 		</div>
 	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+	</script>
+	<script src="<?php echo base_url('js/sb-admin-2.min.js');?>"></script>
+	<script src="<?php echo base_url('js/scripts.js');?>"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
+	</script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			let dataOfficer = $('#dataTable').dataTable({
+				"bServerSide": false,
+				"processing": true,
+				"ajax": "<?=base_url('OfficerDataController/officerDataService')?>",
+				"order": [],
+				"columns": [{
+						"data": "0"
+					},
+					{
+						"data": "1"
+					},
+					{
+						"data": "2"
+					},
+					{
+						"data": "3"
+					},
+					{
+						"data": "4"
+					},
+					{
+						"data": "5"
+					},
+				],
+			})
+
+			$('#dataTable').on('click', '.view-officer-edit', function () {
+				console.log('masuk')
+				let id = $(this).attr('id');
+				$.ajax({
+					url: "<?=base_url('OfficerDataController/detailOfficerEdit')?>",
+					method: "POST",
+					data: {
+						id: id
+					},
+					success: function (data) {
+						$('#update-data').html(data)
+						$('#editModal').modal('show')
+
+						$('#form-edit-officer').on('submit', function () {
+							console.log('masuk ke 2')
+							let id_officer = $("input[name=id_officer]").val()
+							let name_officer = $("input[name=name_officer]").val()
+							let username_officer = $("input[name=username_officer]").val()
+							let password_officer = $("input[name=password_officer]").val()
+							let telepon_officer = $("input[name=telepon_officer]").val()
+							let position_officer = $("select[name=position_officer]")
+							.val()
+							$.ajax({
+								url: "<?=base_url('Action/update_petugas')?>",
+								method: "POST",
+								data: {
+									id_officer: id_officer,
+									name_officer: name_officer,
+									username_officer: username_officer,
+									password_officer: password_officer,
+									telepon_officer: telepon_officer,
+									position_officer: position_officer
+								},
+								beforeSend: function () {
+									swal({
+										title: 'Menunggu',
+										html: 'Memproses data',
+										onOpen: () => {
+											swal.showLoading()
+										}
+									})
+								},
+								success: function (data) {
+									console.log(data)
+									dataPengaduan.api().ajax.reload(null,
+										false)
+									swal({
+										type: 'success',
+										title: 'Update Officer',
+										text: 'Anda Berhasil Mengubah Officer'
+									})
+									$('#editModal').modal('hide');
+								},
+							})
+							return false;
+						})
+					}
+				})
+			})
+
+			$('#dataTable').on('click', '.view-officer-delete', function () {
+				console.log('masuk')
+				let id = $(this).attr('id');
+				$.ajax({
+					url: "<?=base_url('OfficerDataController/detailOfficerDelete')?>",
+					method: "POST",
+					data: {
+						id: id
+					},
+					success: function (data) {
+						$('#delete-data').html(data)
+						$('#deleteModal').modal('show')
+
+						$('#form-delete-officer').on('submit', function () {
+							console.log('masuk ke 2')
+							let id_officer = $("input[name=petugas_id]").val()
+							$.ajax({
+								url: "<?=base_url('Action/delete_petugas')?>",
+								method: "POST",
+								data: {
+									petugas_id: id_officer,
+								},
+								beforeSend: function () {
+									swal({
+										title: 'Menunggu',
+										html: 'Memproses data',
+										onOpen: () => {
+											swal.showLoading()
+										}
+									})
+								},
+								success: function (data) {
+									console.log(data)
+									dataPengaduan.api().ajax.reload(null,
+										false)
+									swal({
+										type: 'success',
+										title: 'Delete Officer',
+										text: 'Anda Berhasil Menghapus Officer'
+									})
+									$('#deleteModal').modal('hide');
+								},
+							})
+							return false;
+						})
+					}
+				})
+			})
+		})
+
+	</script>
 </body>
 
 </html>
