@@ -8,12 +8,20 @@ class AduanController extends CI_Controller{
 
     public function prosesLaporan()
     {
-        $this->ModelAduan->prosesLaporanModel();
+        $data = array(
+            'status' => 'proses',
+        );
+
+        $where = array('id_pengaduan' => $this->input->post('report_id'),);
+
+        $updatean = $this->ModelAduan->prosesLaporanModel($data, $where);
+        echo json_encode($updatean);
     }
 
     public function selesaiLaporan()
     {
-        $this->ModelAduan->selesaiLaporanModel();
+        $data = $this->ModelAduan->selesaiLaporanModel();
+        echo json_encode($data);
     }
 
     public function insertLaporan()
