@@ -331,7 +331,7 @@
 								},
 								success: function (data) {
 									console.log(data)
-									dataPengaduan.api().ajax.reload(null,
+									dataOfficer.api().ajax.reload(null,
 										false)
 									swal({
 										type: 'success',
@@ -380,7 +380,7 @@
 								},
 								success: function (data) {
 									console.log(data)
-									dataPengaduan.api().ajax.reload(null,
+									dataOfficer.api().ajax.reload(null,
 										false)
 									swal({
 										type: 'success',

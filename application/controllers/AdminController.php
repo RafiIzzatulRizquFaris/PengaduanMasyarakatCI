@@ -8,6 +8,7 @@ class AdminController extends CI_Controller{
         $this->load->model('ModelAction');
         $this->load->model('ModelAduan');
     }
+    
     public function index()
     {
         if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 'admin') {

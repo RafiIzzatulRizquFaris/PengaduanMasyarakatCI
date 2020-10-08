@@ -374,7 +374,7 @@
 										title: 'Selesai Pengaduan',
 										text: 'Anda Berhasil Mengubah Pengaduan'
 									})
-									$('#prosesModal').modal('hide');
+									$('#selesaiModal').modal('hide');
 								},
 							})
 							return false;
